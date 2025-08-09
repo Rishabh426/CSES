@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+//////////////////////////// basic template /////////////////////////////////////////////////////////////
+ 
+// template<typename A, typename B>
+// ostream& operator<<(ostream &os, const pair<A, B> &p) {
+//     return os << '(' << p.first << ", " << p.second << ')';
+// }
+ 
+// template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type>
+// ostream& operator<<(ostream &os, const T_container &v) {
+//     os << '{';
+//     string sep;
+//     for (const T &x : v)
+//         os << sep << x, sep = ", ";
+//     return os << '}';
+// }
+ 
+//////////////////////////// basic macros ///////////////////////////////////////////////////////////////
+ 
+#define ll long long
+#define ld long double
+#define vi vector<int>
+#define vll vector<long long>
+#define nl "\n" 
+#define pi pair<int, int>
+#define pl pair<long long, long long>
+#define sz(x) ((int)x.size())         // sz(vector) will give vector size
+#define all(a) (a).begin(), (a).end() // for sorting use sort(all(myVector));
+#define floop(i, start, end) for (int i = start; i < end; ++i)
+#define fnloop(i, start, end) for (int i = start; i >= end; --i)
+ 
+void input(vi& arr) {
+    for(auto &c : arr) cin >> c;
+}
+
+void solve()
+{
+    int n;
+    cin>>n;
+
+    vi arr(n);
+    input(arr);
+
+    floop(i,0,n) {
+        // we want to find the divisors for arr[i] element
+        int x=arr[i], cnt=0;
+        for(int j=1; j*j<=x; j++) {
+            cnt+=(x%j==0 ? (j*j==x ? 1 : 2) : 0) ;
+        }
+        cout<<cnt<<nl ;
+    }    
+}
+ 
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    // int t;
+    // cin >> t;
+    // t--;
+    // while (t--)
+    // {
+    //     solve();
+    // }
+    solve();
+    return 0;
+}
